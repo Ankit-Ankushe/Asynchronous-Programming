@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+       <style>
+           a{
+               text-decoration: none;
+               color: black;
+           }
+           #navbar{
+               height: 50px;
+               display: flex;
+               justify-content: right;
+               border: 1px solid red;
+           }
+           #navbar>div{
+               margin: 10px;
+               margin-right: 40px;
+               font-size: 30px;
+           }
+
+           /* body */
+           #slideshow{
+               width: 70%;
+               height: 700px;
+               border: 1px solid red;
+               margin: 50px auto;
+           }
+           #slideshow>img{
+               height: 100%;
+               width: 100%;
+           }
+       </style>
+    </head>
+
+    <body>
+        <div id="navbar">
+            <div><a href="./index.html">home</a></div>
+            <div><a href="./login.html">login</a></div>
+            <div><a href="./signup.html">signup</a></div>
+        </div>
+        <div id="slideshow">
+            <!--Show Slideshow here-->
+               <img id="img" >
+        </div>
+        <div id="movies">
+            <!--Show list of movies here-->
+            <li>Jersey</li>
+            <li>KGF chapter 2</li>
+            <li>Attack</li>
+            <li>Kick</li>
+            <li>PK</li>
+            <li>Ek Villan</li>
+            <li>Happy New year</li>
+        </div>
+    </body>
+    <script>
+        var images=[
+            "https://stat2.bollywoodhungama.in/wp-content/uploads/2022/04/Jersey-new-352x458.jpeg",
+            "https://tse1.mm.bing.net/th?id=OIP.QCyIdt_H2rrE_tBgbbyVIgHaEo&pid=Api&P=0&w=273&h=170",
+            "https://image.tmdb.org/t/p/w185/5jGKbYuZtdxSNOocI6ZziQeiY4n.jpg",
+            "https://stat1.bollywoodhungama.in/wp-content/uploads/2016/03/89649841-306x393.jpg",
+            "https://media2.bollywoodhungama.in/wp-content/uploads/2016/03/83723409-306x393.jpg",
+            "https://media2.bollywoodhungama.in/wp-content/uploads/2016/03/89650084-306x393.jpg",
+            "https://stat1.bollywoodhungama.in/wp-content/uploads/2016/03/82792532-165x212.jpg",
+        ]
+          
+        var slideshowImage = document.getElementById("img");
+         var i=0;
+         var x=setInterval(function() {
+            slideshowImage.src = images[i];
+            i=i+1;
+            if(i==images.length){
+                i=0;
+            }
+         },2000);
+    </script>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Signup</title>
+        <style>
+            a{
+                text-decoration: none;
+                color: black;
+            }
+            #navbar{
+                height: 50px;
+                display: flex;
+                justify-content: right;
+                border: 1px solid red;
+            }
+            #navbar>div{
+                margin: 10px;
+                margin-right: 40px;
+                font-size: 30px;
+            }
+            form{
+                display: block;
+                border: 1px solid black;
+                margin: auto;
+                width: 50%;
+                height: 700px;
+
+            }
+            form>input{
+                display: block;
+                width: 90%;
+                margin: auto;
+                margin-top: 4%;
+                padding: 1%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="navbar">
+            <div><a href="./index.html">home</a></div>
+            <div><a href="./login.html">login</a></div>
+            <div><a href="./signup.html">signup</a></div>
+        </div>
+        <div id="signup-form-div">
+
+            <form id="myForm"> 
+                <!--Write form input elements here-->
+                <input type="text" placeholder="Name" id="name">
+                <input type="email" placeholder="email" id="email">
+                <input type="number" placeholder="phoneNo" id="phoneNo">
+                <input type="password" placeholder="password" id="password">
+                <input type="submit" placeholder="Enter">
+            </form>
+
+        </div>
+    </body>
+    <script>
+        var userData;
+        if(localStorage.getItem('userData')===null){
+            userData = [];
+        }
+        else{
+            userData = JSON.parse(localStorage.getItem('userData'));
+        }
+        document.querySelector("#myForm").addEventListener("submit" , signupFunc);
+        function signupFunc(){
+            event.preventDefault();
+
+            userObj={
+                email : document.getElementById("email").value,
+                password : document.getElementById("password").value
+            }
+            if(userObj.email=="" || userObj.password==""){
+            alert('Please fill all the required credentials')
+            return
+            }
+
+
+            userData.push(userObj);
+            localStorage.setItem('userData',JSON.stringify(userData));
+            alert('User signed in succesfully!')
+            window.location.href = 'login.html'
+            }
+    </script>
+
+</html>

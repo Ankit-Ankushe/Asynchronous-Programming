@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <style>
+            a{
+                text-decoration: none;
+                color: black;
+            }
+            #navbar{
+                height: 50px;
+                display: flex;
+                justify-content: right;
+                border: 1px solid red;
+            }
+            #navbar>div{
+                margin: 10px;
+                margin-right: 40px;
+                font-size: 30px;
+            }
+            form{
+                display: block;
+                border: 1px solid black;
+                margin: auto;
+                width: 50%;
+                height: 700px;
+
+            }
+            form>input{
+                display: block;
+                width: 90%;
+                margin: auto;
+                margin-top: 4%;
+                padding: 1%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="navbar">
+            <div><a href="./index.html">home</a></div>
+            <div><a href="./login.html">login</a></div>
+            <div><a href="./signup.html">signup</a></div>
+        </div>
+
+
+        <div id="login-form-div">
+
+            <form>
+                <!--Write form input elements here-->
+                <input type="email" placeholder="Email" id="email">
+                <input type="password"  placeholder="Password" id="password">
+                <input type="submit" value="Enter">
+
+            </form>
+
+        </div>
+    </body>
+    <script>
+        var flag = false;
+        document.querySelector("form").addEventListener("submit" , loginFunc)
+        function loginFunc(){
+            event.preventDefault();
+
+            var regstUser = JSON.parse(localStorage.getItem('userData'));
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            regstUser.forEach(usdata => {
+            if(usdata.email===email && usdata.password===password){
+                alert('Login Successful');
+                flag=true
+                window.location.href = 'index.html';
+            }           
+         });
+           if(flag == false){
+            alert("invalid credentials")
+           }   
+        }
+    </script>
+
+</html>
